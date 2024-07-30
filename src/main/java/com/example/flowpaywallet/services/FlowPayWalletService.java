@@ -24,7 +24,7 @@ public class FlowPayWalletService implements WalletService{
         return wallet.getAccountNumber();
     }
     private String generateAccountNumber(){
-        return "212";
+        return "2120";
 
     }
 }
