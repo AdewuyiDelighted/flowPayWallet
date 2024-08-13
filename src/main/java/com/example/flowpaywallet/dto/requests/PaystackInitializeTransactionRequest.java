@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class InitializeTransactionRequest {
+public class PaystackInitializeTransactionRequest {
     private String email;
     private String amount;
 }

@@ -1,18 +1,13 @@
 package com.example.flowpaywallet.services;
 
-import com.example.flowpaywallet.data.model.Wallet;
 import com.example.flowpaywallet.data.respository.WalletRepository;
-import com.example.flowpaywallet.dto.requests.CreateWalletRequest;
-import com.example.flowpaywallet.dto.requests.InitializeTransactionRequest;
+import com.example.flowpaywallet.dto.requests.PaystackInitializeTransactionRequest;
 import com.example.flowpaywallet.dto.response.InitializeTransactionResponse;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-//import lombok.Value;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -20,30 +15,22 @@ import java.net.http.HttpResponse;
 
 @Service
 @RequiredArgsConstructor
-public class FlowPayPaystackWalletService implements WalletService {
+public class FlowPayPaystackWalletService implements PaymentGateWayService {
     private final WalletRepository walletRepository;
     @Value("${paystack_secret_key}")
     private String secretkey;
 
 
-    @Override
-    public String createWallet(CreateWalletRequest createWalletRequest) {
-        String accountNumber = generateAccountNumber();
-        Wallet wallet = new Wallet();
-        wallet.setAccountNumber(accountNumber);
-        wallet.setBalance(BigDecimal.ZERO);
-        walletRepository.save(wallet);
-        return wallet.getAccountNumber();
-    }
+
 
     @Override
-    public InitializeTransactionResponse initializeTransaction(InitializeTransactionRequest initializeTransactionRequest) {
+    public InitializeTransactionResponse initializeTransaction(PaystackInitializeTransactionRequest paystackInitializeTransactionRequest) {
 //        find walllet by accountNumber
         HttpClient client = HttpClient.newHttpClient();
         InitializeTransactionResponse transactionResponse = new InitializeTransactionResponse();
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            String requestString = objectMapper.writeValueAsString(initializeTransactionRequest);
+            String requestString = objectMapper.writeValueAsString(paystackInitializeTransactionRequest);
 
             HttpRequest httpRequest = HttpRequest.newBuilder()
                     .uri(URI.create("https://api.paystack.co/transaction/initialize"))
@@ -60,8 +47,5 @@ public class FlowPayPaystackWalletService implements WalletService {
         return transactionResponse;
     }
 
-    private String generateAccountNumber() {
-        return "2120";
-    }
 
 }

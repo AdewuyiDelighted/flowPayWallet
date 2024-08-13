@@ -12,12 +12,5 @@ public class InitializeTransactionResponse {
     private String message;
     private Data data;
 
-//    {
-//        "status": true,
-//            "message": "Authorization URL created",
-//            "data": {
-//        "authorization_url": "https://checkout.paystack.com/nkdks46nymizns7",
-//                "access_code": "nkdks46nymizns7",
-//                "reference": "nms6uvr1pl"
-//    }
+
 }
