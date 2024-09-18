@@ -20,7 +20,18 @@ public class PaymentGateWayServiceTest {
         PaystackInitializeTransactionRequest paystackInitializeTransactionRequest = new PaystackInitializeTransactionRequest();
         paystackInitializeTransactionRequest.setEmail("firstUser1@gmail.com");
         paystackInitializeTransactionRequest.setAmount("2000");
-        InitializeTransactionResponse initializeTransactionResponse =paymentGateWayService.initializeTransaction(paystackInitializeTransactionRequest);
+        InitializeTransactionResponse initializeTransactionResponse = paymentGateWayService.initializeTransaction(paystackInitializeTransactionRequest);
+        assertThat(initializeTransactionResponse).isNotNull();
+        assertTrue(initializeTransactionResponse.isStatus());
+
+    }
+
+    @Test
+    public void testThatWalletUserCanInitializeTransactionWithPaystackWithAnotherUser() throws JsonProcessingException {
+        PaystackInitializeTransactionRequest paystackInitializeTransactionRequest = new PaystackInitializeTransactionRequest();
+        paystackInitializeTransactionRequest.setEmail("firstTestUser1@gmail.com");
+        paystackInitializeTransactionRequest.setAmount("2000");
+        InitializeTransactionResponse initializeTransactionResponse = paymentGateWayService.initializeTransaction(paystackInitializeTransactionRequest);
         assertThat(initializeTransactionResponse).isNotNull();
         assertTrue(initializeTransactionResponse.isStatus());
 

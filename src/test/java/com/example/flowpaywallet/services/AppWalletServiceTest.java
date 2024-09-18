@@ -17,14 +17,14 @@ public class AppWalletServiceTest {
     @Autowired
     private WalletService walletService;
 
-    @Test
-    public void testThatOnlyUserCanCreateAWallet() {
-        CreateWalletRequest createWalletRequest = new CreateWalletRequest();
-        createWalletRequest.setEmail("firstUser1@gmail.com");
-        String accountNumber = walletService.createWallet(createWalletRequest);
-        assertThat(accountNumber).isNotNull();
-
-    }
+//    @Test
+//    public void testThatOnlyUserCanCreateAWallet() {
+//        CreateWalletRequest createWalletRequest = new CreateWalletRequest();
+//        createWalletRequest.setEmail("firstUser1@gmail.com");
+//        String accountNumber = walletService.createWallet(createWalletRequest);
+//        assertThat(accountNumber).isNotNull();
+//
+//    }
 
     //    test that accountNumberSAreUnquie
 

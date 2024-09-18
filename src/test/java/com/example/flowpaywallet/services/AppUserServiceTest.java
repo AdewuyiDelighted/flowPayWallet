@@ -19,15 +19,15 @@ public class AppUserServiceTest {
     @Test
     public void testThatAccountUserCanBeCreated() {
         CreateUserRequest createUserRequest = new CreateUserRequest();
-        createUserRequest.setFullName("First AppUser");
-        createUserRequest.setEmail("firstUser1@gmail.com");
+        createUserRequest.setFullName("First TestUser");
+        createUserRequest.setEmail("firstTestUser1@gmail.com");
         CreateUserResponse createUserResponse = userService.createUser(createUserRequest);
         assertThat(createUserResponse.getMessage()).isNotNull();
     }
     @Test public void testThatUserWithExistingEmailCannotBeCreatedAgain(){
         CreateUserRequest createUserRequest = new CreateUserRequest();
         createUserRequest.setFullName("First AppUser");
-        createUserRequest.setEmail("firstUser1@gmail.com");
+        createUserRequest.setEmail("firstTestUser1@gmail.com");
         assertThrows(UserAlreadyExistException.class,()->userService.createUser(createUserRequest));
     }
 }
