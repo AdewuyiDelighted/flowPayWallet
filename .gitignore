@@ -19,7 +19,8 @@ target/
 *.iml
 *.ipr
 src/main/resources/secret.properties
-
+C:\Users\Dell\Downloads\flowpaywallet\flowpaywallet\src\main\resources\secret.properties
+C:\Users\Dell\Downloads\flowpaywallet\flowpaywallet\src\main\java\com\example\flowpaywallet\services\PaymentGateWayService.java
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -32,6 +33,5 @@ build/
 
 ### VS Code ###
 .vscode/
+secret.properties
 
-
-!/src/main/resources/secret.properties

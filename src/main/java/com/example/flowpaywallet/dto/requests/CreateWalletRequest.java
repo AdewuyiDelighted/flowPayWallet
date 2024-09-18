@@ -6,6 +6,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class CreateWalletRequest {
-    private String email;
+    private Long appUserId;
+    private String pin;
 
 }

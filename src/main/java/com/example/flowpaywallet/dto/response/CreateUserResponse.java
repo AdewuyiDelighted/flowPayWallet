@@ -7,4 +7,5 @@ import lombok.Setter;
 @Getter
 public class CreateUserResponse {
     private String message;
+    private String accountNumber;
 }
